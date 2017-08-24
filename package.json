@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
-  "author": "Shane Osbourne",
+  "author": "Luke Grayland",
   "license": "MIT",
   "scripts": {
     "start": "node tools/devServer"
