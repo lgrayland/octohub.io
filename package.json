@@ -6,10 +6,11 @@
   "author": "Luke Grayland",
   "license": "MIT",
   "scripts": {
-    "start": "node tools/devServer"
+    "start": "babel-node tools/devServer"
   },
   "dependencies": {},
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.1.2",
     "babel-loader": "^6.1.0",
     "babel-plugin-transform-runtime": "^6.1.2",

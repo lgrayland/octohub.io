@@ -1,15 +1,12 @@
 /**
  * Require Browsersync along with webpack and middleware for it
  */
-const browserSync = require('browser-sync').create();
-const webpack = require('webpack');
-const webpackDevMiddleware = require('webpack-dev-middleware');
-const stripAnsi = require('strip-ansi');
+import browserSync from 'browser-sync';
+import stripAnsi from "strip-ansi";
+import webpack from 'webpack';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import config from '../webpack.config.dev';
 
-/**
- * Require ./webpack.config.js and make a bundler from it
- */
-const config = require('../webpack.config.dev');
 const bundler = webpack(config);
 
 /**
@@ -30,7 +27,7 @@ bundler.plugin('done', function(stats) {
 /**
  * Run Browsersync and use middleware for Hot Module Replacement
  */
-browserSync.init({
+browserSync({
     server: {
         baseDir: 'src',
     },

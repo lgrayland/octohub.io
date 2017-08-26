@@ -1,13 +1,16 @@
 // For instructions about this file refer to
 // webpack and webpack-hot-middleware documentation
-const webpack = require('webpack');
-const path = require('path');
+import webpack from "webpack";
 
-module.exports = {
+import path from "path";
+
+export default {
     debug: true,
     devtool: '#eval-source-map',
 
-    entry: ['./src/index'],
+    entry: [
+        path.resolve(__dirname, 'src/index.js')
+    ],
 
     output: {
         path: path.join(__dirname, 'dist'),
@@ -15,7 +18,10 @@ module.exports = {
         filename: 'bundle.js'
     },
 
-    plugins: [new webpack.optimize.OccurenceOrderPlugin(), new webpack.NoErrorsPlugin()],
+    plugins: [
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.NoErrorsPlugin()
+    ],
 
     module: {
         loaders: [
