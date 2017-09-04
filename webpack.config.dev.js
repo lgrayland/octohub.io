@@ -1,44 +1,43 @@
-// For instructions about this file refer to
-// webpack and webpack-hot-middleware documentation
-import webpack from "webpack";
 
+import webpack from "webpack";
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import autoprefixer from 'autoprefixer';
 import path from "path";
 
 export default {
-    debug: true,
-    devtool: '#eval-source-map',
+    devtool: 'eval-source-map',
 
     entry: [
         path.resolve(__dirname, 'src/index.js')
     ],
 
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'dist'),
         publicPath: '/',
         filename: 'bundle.js'
     },
 
     plugins: [
-        new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.NoErrorsPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoEmitOnErrorsPlugin(),
+        new webpack.LoaderOptionsPlugin({
+            minimize: false,
+            debug: true,
+            noInfo: true, // set to false to see a list of every file being bundled.
+            options: {
+                sassLoader: {
+                    includePaths: [path.resolve(__dirname, 'src', 'scss')]
+                },
+                context: '/',
+            }
+        }),
+        new webpack.IgnorePlugin(/vertx/),
     ],
 
     module: {
-        loaders: [
-            {
-                loader: 'babel-loader',
-
-                // Only run `.js` and `.jsx` files through Babel
-                test: /\.jsx?$/,
-
-                exclude: /node_modules/,
-
-                // Options to configure babel with
-                query: {
-                    plugins: ['transform-runtime'],
-                    presets: ['es2015', 'stage-0']
-                }
-            }
+        rules: [
+            {test: /\.jsx?$/, exclude: /node_modules/, loaders: ['babel-loader']},
+            {test: /(\.css|\.scss|\.sass)$/, loaders: ['style-loader', 'css-loader?sourceMap', 'postcss-loader', 'sass-loader?sourceMap']}
         ]
     }
 };

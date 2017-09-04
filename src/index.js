@@ -1,23 +1,25 @@
-import { inc, dec } from './actions';
+import "@webcomponents/webcomponentsjs/webcomponents-lite";
+import {Core} from "./utils/core";
 
-window.onload = function() {
-    let number = document.getElementById('number');
-    let incBtn = document.getElementById('inc');
-    let decBtn = document.getElementById('dec');
+import './styles/main.scss'
 
-    incBtn.addEventListener(
-        'click',
-        function() {
-            number.innerHTML = inc(+number.innerHTML);
-        },
-        false
-    );
+class App {
+    constructor() {
+        // new Authentication();
+        // const router = new RouterHandler();
+        new Core();
+        // new Http();
+        // router.init();
+    }
+}
 
-    decBtn.addEventListener(
-        'click',
-        function() {
-            number.innerHTML = dec(+number.innerHTML);
-        },
-        false
-    );
-};
+if ('registerElement' in document
+    && 'import' in document.createElement('link')
+    && 'content' in document.createElement('template')) {
+    // platform is good!
+    new App();
+} else {
+    setTimeout(() => {
+        new App();
+    });
+}

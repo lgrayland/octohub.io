@@ -2,27 +2,11 @@
  * Require Browsersync along with webpack and middleware for it
  */
 import browserSync from 'browser-sync';
-import stripAnsi from "strip-ansi";
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import config from '../webpack.config.dev';
 
 const bundler = webpack(config);
-
-/**
- * Reload all devices when bundle is complete
- * or send a fullscreen error message to the browser instead
- */
-bundler.plugin('done', function(stats) {
-    if (stats.hasErrors() || stats.hasWarnings()) {
-        return browserSync.sockets.emit('fullscreen:message', {
-            title: 'Webpack Error:',
-            body: stripAnsi(stats.toString()),
-            timeout: 100000
-        });
-    }
-    browserSync.reload();
-});
 
 /**
  * Run Browsersync and use middleware for Hot Module Replacement
