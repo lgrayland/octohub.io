@@ -41,10 +41,6 @@ export class TimelineContainerComponent extends HTMLElement {
 
     }
 
-    refresh() {
-        this.innerHTML = this.render();
-    }
-
     render() {
         return `
             ${this.groupings.map(grouping => {
