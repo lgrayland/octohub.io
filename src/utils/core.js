@@ -11,11 +11,11 @@ import {ComponentRegistry} from "./component-registry";
 // import {EditorComponent} from "../pages/editor.comp";
 // import {SettingsComponent} from "../pages/settings.comp";
 // import {PopularTagsComponent} from "../components/popular-tags.comp";
-import {CommentsContainerComponent} from "../components/comments-container.comp";
 // import {UserInfoComponent} from "../components/user-info.comp";
 // import {ArticlePreviewBannerComponent} from "../components/article-preview-banner";
 // import {CommentCreateComponent} from "../components/comment-create.comp";
-import {TimelineContainerComponent} from '../components/TimelineContainer'
+import {Timeline} from '../components/Timeline'
+import {EventCard} from '../components/EventCard'
 
 export class Core {
     constructor() {
@@ -40,7 +40,11 @@ const components = [
 
     {
         tagName: 'timeline-container',
-        component: TimelineContainerComponent
+        component: Timeline
     },
+    {
+        tagName:'event-card',
+        component: EventCard
+    }
 
 ];
