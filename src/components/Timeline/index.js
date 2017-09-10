@@ -31,7 +31,8 @@ export class Timeline extends HTMLElement {
                     <div class="events">
                     ${grouping.items.map((event) => {
                 return `
-                        <event-card class="event event-${event.id}"
+                        <event-card
+                        id="${event.id}"
                         date="${event.date}"
                         details="${event.details}"
                         >
