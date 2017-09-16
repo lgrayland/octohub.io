@@ -1,7 +1,8 @@
 import "@webcomponents/webcomponentsjs/webcomponents-lite";
 import {Core} from "./utils/core";
 
-import './styles/main.scss'
+import 'normalize.css';
+import './styles/main.scss';
 
 class App {
     constructor() {

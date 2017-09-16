@@ -1,46 +1,98 @@
-* {
-  border: 1px solid black;
+@import "flex-col";
+// Variables
+$bg-body: #f9f9f9;
+
+$red: #ee4d4d;
+$blue: #2b2e48;
+$primary-color: $red;
+$secondary-color: $blue;
+
+
+// Typography
+$base-font: helvetica, arial, tahoma, verdana;
+$base-font-title: "Dosis", arial, tahoma, verdana;
+
+$base-font-color: #726f77;
+
+// Timeline
+$timeline-color: $primary-color;
+
+
+// Mixins and Placeholders
+%clearfix {
+  &:after, &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    clear: both;
+  }
 }
 
-timeline-container{
-  display: block;
-  position: relative;
-  padding: 0 1em;
-  margin-top: 2em;
-  &::before{
-    content: '';
-    position: absolute;
-    top: -22px;
-    bottom: 15px;
-    left: 93px;
-    height: 100%;
-    width: 4px;
-    background: black;
-  }
-  .group{
-    .title-container{
-      display: flex;
-      align-items: center;
-      .title{
-        margin: 0 10px;
-      }
-    }
-    .events{
-      margin-left: 53px;
-      event-card{
-        padding: 1em 0;
-        display: flex;
-        align-items: center;
-        .content{
-          margin: 0 10px
-        }
-        .content[data-state=closed]{
-          display: none;
-        }
-        .content[data-state=open]{
-          display: inherit;
-        }
-      }
-    }
+@mixin prefix($prop, $val) {
+  @each $prefix in '-webkit-', '-moz-', '-ms-', '' {
+    #{$prefix}#{$prop}: $val;
   }
 }
+@mixin centerer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+*, *:before, *:after {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+}
+body {
+  background: $bg-body;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  font-family: $base-font;
+  line-height: 20px;
+  font-size: 14px;
+  color: $base-font-color;
+}
+
+img {max-width: 100%;}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+h1, h2, h3, h4 {
+  font:{
+    family: $base-font-title;
+    weight: 500;
+  }
+}
+img{
+  width: 100%;
+}
+.centre-text{
+  text-align: center;
+}
+
+.hero{
+  background: url(https://s3-eu-west-1.amazonaws.com/octohub-resources/img/green-mesh.svg) no-repeat;
+  background-size: cover;
+  .profile-image{
+    width: 50%;
+    border-radius: 50%;
+    margin: 0 auto;
+  }
+}
+
+@import "timeline";
+
+@import "skills";

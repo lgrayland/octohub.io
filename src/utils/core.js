@@ -15,7 +15,10 @@ import {ComponentRegistry} from "./component-registry";
 // import {ArticlePreviewBannerComponent} from "../components/article-preview-banner";
 // import {CommentCreateComponent} from "../components/comment-create.comp";
 import {Timeline} from '../components/Timeline'
-import {EventCard} from '../components/EventCard'
+import {TimelineEvent} from '../components/TimelineEvent'
+import {TimelineIcon} from '../components/TimelineIcon'
+import {Languages} from '../components/Languages'
+
 
 export class Core {
     constructor() {
@@ -39,12 +42,20 @@ Core.inst = null;
 const components = [
 
     {
-        tagName: 'timeline-container',
+        tagName: 'timeline-component',
         component: Timeline
     },
     {
-        tagName:'event-card',
-        component: EventCard
+        tagName:'timeline-event',
+        component: TimelineEvent
+    },
+    {
+        tagName:'timeline-icon',
+        component: TimelineIcon
+    },
+    {
+        tagName:'lang-container',
+        component: Languages
     }
 
 ];
